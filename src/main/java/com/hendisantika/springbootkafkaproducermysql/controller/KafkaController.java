@@ -3,6 +3,8 @@ package com.hendisantika.springbootkafkaproducermysql.controller;
 import com.hendisantika.springbootkafkaproducermysql.service.KafkaConsumer;
 import com.hendisantika.springbootkafkaproducermysql.service.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,4 +23,9 @@ public class KafkaController {
 
     @Autowired
     private KafkaProducer producer;
+
+    @PostMapping("/send")
+    public void send(@RequestBody String data) {
+        producer.produce(data);
+    }
 }
