@@ -36,4 +36,20 @@ public class KafkaController {
     public List<String> receive() {
         return KafkaConsumer.messages;
     }
+
+    public KafkaConsumer getConsumer() {
+        return consumer;
+    }
+
+    public void setConsumer(KafkaConsumer consumer) {
+        this.consumer = consumer;
+    }
+
+    public KafkaProducer getProducer() {
+        return producer;
+    }
+
+    public void setProducer(KafkaProducer producer) {
+        this.producer = producer;
+    }
 }
