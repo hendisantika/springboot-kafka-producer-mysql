@@ -3,9 +3,12 @@ package com.hendisantika.springbootkafkaproducermysql.controller;
 import com.hendisantika.springbootkafkaproducermysql.service.KafkaConsumer;
 import com.hendisantika.springbootkafkaproducermysql.service.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,5 +30,10 @@ public class KafkaController {
     @PostMapping("/send")
     public void send(@RequestBody String data) {
         producer.produce(data);
+    }
+
+    @GetMapping("/receive")
+    public List<String> receive() {
+        return KafkaConsumer.messages;
     }
 }
